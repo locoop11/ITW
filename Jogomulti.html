@@ -27,20 +27,18 @@ PL21 ----------------------->
         <div class="tempo-container">Tempo Decorrido: <span id="tempo">0</span></div>
     </section>
     <div class="game-container">
-        <button id="startButton" class="playButton">COMEÇAR JOGO</button>
-        
-        
-        <section class="table" id="game-board"></section>
-        <script src="scripts/jogar.js"></script>
+        <div class="game-controls">
+            <button id="startButton" class="playButton">COMEÇAR JOGO</button>
+            <button id="endButton" class="playButton" onclick="terminarJogo()" disabled>TERMINAR</button>
+        </div>
 
+        <section class="table" id="game-board"></section>
+        
         <div class="scoreboard">
             <div id="player1-score">Player 1: 0</div>
             <div id="player2-score">Player 2: 0</div>
             <div id="current-player">Current Player: Player 1</div>
         </div>
-    
-        
-        <button id="endButton" class="playButton" onclick="terminarJogo()" disabled>TERMINAR</button>
     </div>
 </body>
 </html>

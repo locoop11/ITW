@@ -24,6 +24,7 @@ function iniciarCronometro() {
 function terminarJogo() {
     clearInterval(intervalo);
     alert("Jogo terminado!");
+    window.location.href = "Home.html";
 }
 
 
