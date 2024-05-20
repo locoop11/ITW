@@ -1,0 +1,46 @@
+<!-- ITW
+2023/24
+Grupo 2
+Duarte Correia, fc60232
+Hugo Silva, fc60253
+Tiago Carvalho, fc60231
+
+PL21 ----------------------->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link rel="stylesheet" href="media/capacarta.jpg">
+    <link rel="stylesheet" href="style/geral.css">
+    <link rel="stylesheet" href="style/jogos.css">
+    <link rel="stylesheet" href="style/jogar.css">
+    <link rel="stylesheet" href="style/tabela.css">
+    <script src="scripts/jogar.js"></script>
+    <meta charset="UTF-8">
+    <title>Jogar</title>
+</head>
+<body>
+    <section class="header">
+        <div class="titulo">
+            MULTIPLAYER
+        </div>
+        <div class="tempo-container">Tempo Decorrido: <span id="tempo">0</span></div>
+    </section>
+    <div class="game-container">
+        <button id="startButton" class="playButton">COMEÇAR JOGO</button>
+        
+        
+        <section class="table" id="game-board"></section>
+        <script src="scripts/jogar.js"></script>
+
+        <div class="scoreboard">
+            <div id="player1-score">Player 1: 0</div>
+            <div id="player2-score">Player 2: 0</div>
+            <div id="current-player">Current Player: Player 1</div>
+        </div>
+    
+        
+        <button id="endButton" class="playButton" onclick="terminarJogo()" disabled>TERMINAR</button>
+    </div>
+</body>
+</html>

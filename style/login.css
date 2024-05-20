@@ -1,0 +1,123 @@
+/* ITW
+2023/24
+Grupo 2
+Duarte Correia, fc60232
+Hugo Silva, fc60253
+Tiago Carvalho, fc60231
+PL21 */
+
+
+/* Estiliza o ícone */
+.icon {
+    color: #4CAF50; /* Cor do ícone */
+    margin-right: 10px; /* Espaçamento à direita do ícone */
+}
+
+/* Estiliza os campos de entrada */
+.input-field {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Preenchimento interno */
+    margin-bottom: 20px; /* Margem inferior */
+    border-radius: 5px; /* Bordas arredondadas */
+    border: 1px solid #ccc; /* Borda sólida com cor cinza */
+}
+
+/* Estiliza os rótulos dos campos de entrada */
+.input-label {
+    color: #4CAF50; /* Cor do rótulo */
+    margin-bottom: 5px; /* Margem inferior */
+}
+
+/* Estiliza o botão de login */
+button {
+    text-align: center; /* Alinha o botão ao centro */
+}
+
+.playButton {
+    display: block;
+    width: 120px;
+    height: 40px;
+    padding: 5px 10px;
+    margin: 10px auto;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    line-height: 55px;
+}
+
+/* Estiliza o link de registro */
+.register-link {
+    color: #4CAF50; /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+/* Estiliza o texto de registro */
+.plogin {
+    color: #555; /* Cor do texto */
+    font-size: 14px; /* Tamanho da fonte */
+    text-align: center; /* Alinha ao centro */
+}
+
+
+h1 {
+    color: goldenrod ;
+    font-size: 55px;
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.form-box{
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background: transparent;
+    border: 2px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputbox{
+    position: relative;
+    margin: 30px 0;
+    height: 60px;
+    width: 310px;
+    border-bottom: 2px;
+}
+
+label {
+    color: #fff;
+}
+
+.plogin {
+    color: white;
+}
+
+a {
+    color: goldenrod;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}

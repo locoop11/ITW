@@ -1,0 +1,122 @@
+/* ITW
+2023/24
+Grupo 2
+Duarte Correia, fc60232
+Hugo Silva, fc60253
+Tiago Carvalho, fc60231
+PL21 */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-box {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.inputbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.inputbox label {
+    color: white;
+    width: 80px; /* Ajuste conforme necessário */
+    margin-right: 10px; /* Espaçamento entre o label e o input */
+    text-align: right;
+}
+
+.inputbox ion-icon {
+    color: white;
+    margin-right: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="range"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"],
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #45a049;
+}
+
+/* Adicione esta regra ao seu arquivo de estilo existente */
+input[type="range"] + output {
+    color: white;
+    font-weight: bold;
+    margin-left: 10px; /* Espaçamento opcional */
+}
+
+#formTitle {
+    text-align: center;
+    color: goldenrod;
+    -webkit-text-stroke: 0.5px black;
+}
+
+h1 {
+    color: goldenrod ;
+    font-size: 55px;
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+}
+
+output {
+    color: white;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+.inputbox input[type="radio"] {
+    margin-left: 10px;
+}
+
+

@@ -1,0 +1,69 @@
+<!-- ITW
+2023/24
+Grupo 2
+Duarte Correia, fc60232
+Hugo Silva, fc60253
+Tiago Carvalho, fc60231
+
+PL21 ----------------------->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link rel="stylesheet" href="media/capacarta.jpg">
+    <link rel="stylesheet" href="style/geral.css">
+    <link rel="stylesheet" href="style/jogos.css">
+    <link rel="stylesheet" href="style/tabela.css">
+    <script src="scripts/jogar.js"></script>
+    <meta charset="UTF-8">
+    <title>Jogar</title>
+</head>
+<body>
+    <section class="header">
+        <div class="titulo">
+            TEMPO LIMITADO
+        </div>
+        <div class="tempo-container">Tempo Decorrido: <span id="tempo">0</span></div>
+    </section>
+    <div class="game-container">
+        <button id="startButton" class="playButton">COMEÇAR JOGO</button>
+        <div class="table-container">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                        <td><img src="media/capacarta.jpg"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="endButton" class="playButton" onclick="terminarJogo()" disabled>TERMINAR</button>
+    </div>
+</body>
+</html>

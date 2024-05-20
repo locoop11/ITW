@@ -1,0 +1,70 @@
+/* ITW
+2023/24
+Grupo 2
+Duarte Correia, fc60232
+Hugo Silva, fc60253
+Tiago Carvalho, fc60231
+PL21 */
+
+.jogar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tutorial {
+    font-size: 20px;
+    position: absolute;
+    top: calc(50% + 20px); 
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-decoration: none;
+}
+
+
+.ranking {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    margin: 10px
+}
+
+.login {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    margin: 10px;
+}
+
+.more_info {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    margin: 10px;
+}
+
+.nome {
+    color: goldenrod;
+    font-size: 80px;
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    -webkit-text-stroke: 2px black;
+    position: absolute;
+    top: 15%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.playButton {
+    width: 250px; 
+    height: 80px; 
+    padding: 20px 40px; 
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50; 
+    border: 1px solid black;
+}

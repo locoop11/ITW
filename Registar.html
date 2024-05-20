@@ -1,0 +1,65 @@
+<!-- ITW
+2023/24
+Grupo 2
+Duarte Correia, fc60232
+Hugo Silva, fc60253
+Tiago Carvalho, fc60231
+
+PL21 ----------------------->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <link rel="stylesheet" href="style/geral.css">
+    <link rel="stylesheet" href="style/position.css">
+    <link rel="stylesheet" href="style/registar.css">
+    <script src="scripts/login.js"></script>
+    <meta charset="UTF-8">
+    <title>Registar</title>
+</head>
+<body>
+    <form id="frmRegister" onsubmit="return addData(event)">
+        <section>
+            <div class="form-box">
+                <div class="form-value">
+                    <h1 class="h1signup">Registar</h1><br>
+                    <div class="inputbox">
+                      <ion-icon name="pencil-outline"></ion-icon>
+                      <input id="name" type="text" required>
+                      <label for="name">Name</label>
+                    </div>
+                    <div class="inputbox">
+                      <ion-icon name="mail-outline"></ion-icon>
+                      <input id="signUpEmail" type="email" required>
+                      <label for="signUpEmail">Email</label>
+                    </div>
+                    <div class="inputbox">
+                      <ion-icon name="lock-closed-outline"></ion-icon>
+                      <input id="signUpPassword" type="password" required>
+                      <label for="signUpPassword">Password</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="school-outline"></ion-icon>
+                        <input type="range" id="age" name="age" value="4" min="4" max="120" oninput="this.nextElementSibling.value = this.value">
+                        <output>4</output>
+                        <label for="age">Age</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="people-outline"></ion-icon>
+                        <label for="gender">Gender</label><br>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label><br>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label><br><br>
+                    </div>
+                    <div class="button">
+                        <button type="submit">Sign Up</button> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

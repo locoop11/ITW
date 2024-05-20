@@ -1,0 +1,86 @@
+/* ITW
+2023/24
+Grupo 2
+Duarte Correia, fc60232
+Hugo Silva, fc60253
+Tiago Carvalho, fc60231
+PL21 */
+
+
+body {
+    background-image: url("../media/background.jpeg");
+    background-size: cover;
+}
+
+.botoes {
+    text-align: center; 
+    margin-top: 50px; 
+}
+
+
+.playButton {
+    width: 250px; 
+    height: 60px; 
+    padding: 10px 20px;
+    font-size: 18px;    
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50; 
+    border: 1px solid black;
+}
+
+
+.home {
+    text-align: center; 
+    margin-top: 50px; 
+}
+
+.multi {
+    text-align: center; 
+    margin-top: auto; 
+}
+
+.single {
+    text-align: center; 
+    margin-top: auto; 
+}
+
+.time {
+    text-align: center; 
+    margin-top: auto; 
+}
+p {
+    color: #f0f8ff;
+    font-size: 24px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.titulo {
+    color: goldenrod;
+    font-size: 55px;
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+}
+
+video {
+    display: block; 
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 599px) {
+    .jogar,
+    .tutorial,
+    .ranking,
+    .login,
+    .more_info {
+        position: static;
+        width: 100%;
+        margin: 10px auto;
+        text-align: center;
+    }
+}
+
+ion-icon {
+    color: white;
+}

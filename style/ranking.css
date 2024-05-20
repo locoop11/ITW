@@ -1,0 +1,29 @@
+/* ITW
+2023/24
+Grupo 2
+Duarte Correia, fc60232
+Hugo Silva, fc60253
+Tiago Carvalho, fc60231
+PL21 */
+
+.text{
+    color: white;
+    font-size: 35px;
+    font-family: arial;
+    -webkit-text-stroke: 1px black;
+}
+
+.centrado {
+    margin: 0 auto;
+    width: 600px;
+    text-align: center; 
+}
+
+.cor{
+    color: goldenrod;
+    font-size: 40px;
+    font-family: sans-serif;
+    text-align: center;
+    -webkit-text-stroke: 1px black;
+}
+
