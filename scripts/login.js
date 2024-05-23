@@ -26,17 +26,25 @@ function addData(event) {
     const email = document.getElementById("signUpEmail").value;
     const password = document.getElementById("signUpPassword").value;
 
-    const newUser = {
-        email: email,
-        password: password,
-        isLoggedIn: true // Marca o usuário como logado após o registro
-    };
-
     let users = JSON.parse(localStorage.getItem(USER_DATA)) || [];
-    users.push(newUser);
 
-    localStorage.setItem(USER_DATA, JSON.stringify(users));
-    window.location.href = "Home.html"; // Redireciona para Home após o registro
+    // Verificar se o email já existe
+    const userExists = users.some(user => user.email === email);
+    
+    if (!userExists) {
+        const newUser = {
+            email: email,
+            password: password,
+            isLoggedIn: true // Marca o usuário como logado após o registro
+        };
+
+        users.push(newUser);
+
+        localStorage.setItem(USER_DATA, JSON.stringify(users));
+        window.location.href = "Home.html"; // Redireciona para Home após o registro
+    } else {
+        alert("Email registered successfully");
+    }
 }
 
 /**

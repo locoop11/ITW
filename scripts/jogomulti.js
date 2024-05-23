@@ -1,5 +1,3 @@
-"use strict"
-
 let tempoDecorrido = 0;
 let intervalo;
 
@@ -8,13 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const endButton = document.getElementById('endButton');
 
     startButton.addEventListener('click', function() {
-        startButton.disabled = true; // Desativa o botão de começar após iniciar o jogo
-        endButton.disabled = false; // Ativa o botão de terminar
+        startButton.disabled = true; // Desativar o botão de começar após iniciar o jogo
+        endButton.disabled = false; // Ativar o botão de terminar
         iniciarCronometro();
+        generateTable();
     });
 });
 
 function iniciarCronometro() {
+    // Reiniciar o cronômetro
+    clearInterval(intervalo);
+    tempoDecorrido = 0;
+    document.getElementById('tempo').innerText = tempoDecorrido;
     intervalo = setInterval(function() {
         tempoDecorrido++;
         document.getElementById('tempo').innerText = tempoDecorrido;
@@ -27,8 +30,6 @@ function terminarJogo() {
     window.location.href = "Home.html";
 }
 
-
-
 // Define the Card class
 class Card {
     constructor(name, imagePathDown, imagePathUp) {
@@ -39,18 +40,22 @@ class Card {
 }
 
 function generateTable() {
+
+    const gameBoard1 = document.getElementById('game-board');
+    gameBoard1.innerHTML = '';
+
     // Create an array of 10 unique cards
     let cards = [
-        new Card('Card 1', 'media/capacarta.jpg', 'media/imagensITW/im1.jpg'),
-        new Card('Card 2', 'media/capacarta.jpg', 'media/imagensITW/im2.jpg'),
-        new Card('Card 3', 'media/capacarta.jpg', 'media/imagensITW/im3.png'),
-        new Card('Card 4', 'media/capacarta.jpg', 'media/imagensITW/im4.jpeg'),
-        new Card('Card 5', 'media/capacarta.jpg', 'media/imagensITW/im5.png'),
-        new Card('Card 6', 'media/capacarta.jpg', 'media/imagensITW/im6.jpeg'),
-        new Card('Card 7', 'media/capacarta.jpg', 'media/imagensITW/im7.jpg'),
-        new Card('Card 8', 'media/capacarta.jpg', 'media/imagensITW/im8.webp'),
-        new Card('Card 9', 'media/capacarta.jpg', 'media/imagensITW/im9.jpg'),
-        new Card('Card 10', 'media/capacarta.jpg', 'media/imagensITW/im10.jpg.webp'),
+        new Card('Card 1', 'media/capacarta.jpg', 'media/cao.png'),
+        new Card('Card 2', 'media/capacarta.jpg', 'media/gato.jpg'),
+        new Card('Card 3', 'media/capacarta.jpg', 'media/girafa.png'),
+        new Card('Card 4', 'media/capacarta.jpg', 'media/vaca.png'),
+        new Card('Card 5', 'media/capacarta.jpg', 'media/urso.jpg'),
+        new Card('Card 6', 'media/capacarta.jpg', 'media/leao.jpg'),
+        new Card('Card 7', 'media/capacarta.jpg', 'media/rato.png'),
+        new Card('Card 8', 'media/capacarta.jpg', 'media/sapo.jpg'),
+        new Card('Card 9', 'media/capacarta.jpg', 'media/golfinho.jpg'),
+        new Card('Card 10', 'media/capacarta.jpg', 'media/abelha.jpg'),
     ];
 
     if (cards.length !== 10) {
@@ -92,6 +97,7 @@ function generateTable() {
 
     let firstCard = null;
     let secondCard = null;
+    
     let preventClick = false;
 
     let player1Score = 0;
@@ -101,7 +107,7 @@ function generateTable() {
     function updateScores(){
         document.getElementById("player1-score").textContent = `Player 1: ${player1Score}`
         document.getElementById("player2-score").textContent = `Player 2: ${player2Score}`
-        document.getElementById("current-player").textContent = `Current Player: Player: ${currentPlayer}`
+        document.getElementById("current-player").textContent = `Current Player: ${currentPlayer}`
     }
 
 
@@ -121,6 +127,22 @@ function generateTable() {
             } else if (!secondCard) {
                 secondCard = img;
                 img.src = cards.find(card => card.name === img.dataset.name).imagePathUp;
+                
+                if (firstCard === secondCard){
+                    
+                    alert("Nao podes escolher a mesma carta duas vezes!\nPerdeste a vez!")
+                    // They match, so keep them face up
+                    if (currentPlayer === 1)
+                        currentPlayer = 2
+                    if (currentPlayer === 2)
+                        currentPlayer = 1
+                    firstCard.src = cards.find(card => card.name === firstCard.dataset.name).imagePathDown;
+                    secondCard.src = cards.find(card => card.name === secondCard.dataset.name).imagePathDown;
+                    firstCard = null;
+                    secondCard = null;
+
+                }
+
 
                 // Check if the two cards match
                 if (firstCard.dataset.name === secondCard.dataset.name) {
@@ -129,9 +151,17 @@ function generateTable() {
                         player1Score += 1
                     if (currentPlayer === 2)
                         player2Score += 1
+
                     updateScores()
-                    firstCard = null;
-                    secondCard = null;
+                    preventClick = true;
+                    setTimeout(() => {
+                        // They match, so remove the matched cards from the table
+                        firstCard.parentNode.removeChild(firstCard);
+                        secondCard.parentNode.removeChild(secondCard);
+                        firstCard = null;
+                        secondCard = null;
+                        preventClick = false;
+                    }, 1000); // 1 second delay
 
 
                 } else {
@@ -154,16 +184,5 @@ function generateTable() {
         }
     });
 
-    // Check if the element with id 'game-board' exists
-    const gameBoard = document.getElementById('game-board');
-    if (gameBoard) {
-        gameBoard.appendChild(table);
-    } else {
-        console.error("Element with id 'game-board' not found.");
-    }
+    gameBoard1.appendChild(table);
 }
-
-// Call generateTable when the window loads
-window.onload = function() {
-    generateTable();
-};

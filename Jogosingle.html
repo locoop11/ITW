@@ -13,10 +13,11 @@ PL21 ----------------------->
     <link rel="stylesheet" href="media/capacarta.jpg">
     <link rel="stylesheet" href="style/geral.css">
     <link rel="stylesheet" href="style/jogos.css">
+    <link rel="stylesheet" href="style/jogar.css">
     <link rel="stylesheet" href="style/tabela.css">
-    <script src="scripts/jogar.js"></script>
+    <script src="scripts/jogosingle.js"></script>
     <meta charset="UTF-8">
-    <title>Jogar</title>
+    <title>Jogar Singleplayer</title>
 </head>
 <body>
     <section class="header">
@@ -25,45 +26,18 @@ PL21 ----------------------->
         </div>
         <div class="tempo-container">Tempo Decorrido: <span id="tempo">0</span></div>
     </section>
+        
     <div class="game-container">
-        <button id="startButton" class="playButton">COMEÇAR JOGO</button>
-        <div class="table-container">
-            <table>
-                <tbody>
-                    <tr>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                        <td><img src="media/capacarta.jpg"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="game-controls">
+            <button id="startButton" class="playButton">COMEÇAR JOGO</button>
+            <button id="endButton" class="playButton" onclick="terminarJogo()" disabled>TERMINAR</button>
         </div>
-        <button id="endButton" class="playButton" onclick="terminarJogo()" disabled>TERMINAR</button>
+
+        <section class="table" id="game-board"></section>
+        
+        <div class="scoreboard">
+            <div id="player1-score">Player 1: 0</div>
+        </div>
     </div>
 </body>
 </html>
