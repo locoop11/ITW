@@ -41,16 +41,16 @@ class Card {
 function generateTable() {
     // Create an array of 10 unique cards
     let cards = [
-        new Card('Card 1', 'media/capacarta.jpg', 'images/card1-up.png'),
-        new Card('Card 2', 'media/capacarta.jpg', 'images/card2-up.png'),
-        new Card('Card 3', 'media/capacarta.jpg', 'images/card3-up.png'),
-        new Card('Card 4', 'media/capacarta.jpg', 'images/card4-up.png'),
-        new Card('Card 5', 'media/capacarta.jpg', 'images/card5-up.png'),
-        new Card('Card 6', 'media/capacarta.jpg', 'images/card6-up.png'),
-        new Card('Card 7', 'media/capacarta.jpg', 'images/card7-up.png'),
-        new Card('Card 8', 'media/capacarta.jpg', 'images/card8-up.png'),
-        new Card('Card 9', 'media/capacarta.jpg', 'images/card9-up.png'),
-        new Card('Card 10', 'media/capacarta.jpg', 'images/card10-up.png')
+        new Card('Card 1', 'media/capacarta.jpg', 'media/imagensITW/im1.jpg'),
+        new Card('Card 2', 'media/capacarta.jpg', 'media/imagensITW/im2.jpg'),
+        new Card('Card 3', 'media/capacarta.jpg', 'media/imagensITW/im3.png'),
+        new Card('Card 4', 'media/capacarta.jpg', 'media/imagensITW/im4.jpeg'),
+        new Card('Card 5', 'media/capacarta.jpg', 'media/imagensITW/im5.png'),
+        new Card('Card 6', 'media/capacarta.jpg', 'media/imagensITW/im6.jpeg'),
+        new Card('Card 7', 'media/capacarta.jpg', 'media/imagensITW/im7.jpg'),
+        new Card('Card 8', 'media/capacarta.jpg', 'media/imagensITW/im8.webp'),
+        new Card('Card 9', 'media/capacarta.jpg', 'media/imagensITW/im9.jpg'),
+        new Card('Card 10', 'media/capacarta.jpg', 'media/imagensITW/im10.jpg.webp'),
     ];
 
     if (cards.length !== 10) {
