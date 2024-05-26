@@ -155,7 +155,7 @@ function generateTable() {
                 secondCardImage.src = cards.find(card => card.name === secondCardImage.dataset.name).imagePathUp;
                 
                 // Check if the two cards match
-                processCardsMatch(firstCard, secondCard);
+                processCardsMatchMulti(firstCard, secondCard);
 
             }            
         }
