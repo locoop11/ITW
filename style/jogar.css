@@ -116,6 +116,13 @@ PL21 */
     transform: translateX(-69%); /* Center it horizontally */
     top: 50px; /* Adjust vertical spacing as needed */
 }
+#points-remaining {
+    /* Position current player below the top scores and center horizontally */
+    position: absolute;
+    left: 50%; /* Position it in the middle */
+    transform: translateX(-69%); /* Center it horizontally */
+    top: 30px; /* Adjust vertical spacing as needed */
+}
 
 .card-container {
     position: relative;

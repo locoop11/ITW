@@ -1,5 +1,7 @@
 "use strict"
 
+const TOTAL_POINTS = 10; // Defina o número total de pontos necessários para vencer o jogo
+
 let tempoDecorrido = 0;
 let intervalo;
 
@@ -114,6 +116,8 @@ function generateTable() {
 
     function updateScores(){
         document.getElementById("player1-score").textContent = `Player 1: ${player1Score}`
+        const remainingPoints = TOTAL_POINTS - player1Score;
+        document.getElementById("points-remaining").textContent = `Pontos Restantes: ${remainingPoints}`;
     }
 
     function processCardsMatchSingle(firstCardImagePath, secondCardImagePath) {
@@ -134,9 +138,14 @@ function generateTable() {
         // Check if the two cards match
         if (firstCard.dataset.name === secondCard.dataset.name) {
             // They match, so keep them face up
-                player1Score += 1
+            player1Score += 1
             updateScores()
             preventClick = true;
+            if (player1Score === TOTAL_POINTS) {
+                // All cards matched, end the game and save the score
+                endGameAndSaveScore();
+            }
+
             setTimeout(() => {
                 // They match, so remove the matched cards from the table
                 firstCard.parentNode.removeChild(firstCard);
@@ -150,6 +159,7 @@ function generateTable() {
         } else {
             updateScores()
             preventClick = true;
+
             setTimeout(() => {
                 firstCard.src = cards.find(card => card.name === firstCard.dataset.name).imagePathDown;
                 secondCard.src = cards.find(card => card.name === secondCard.dataset.name).imagePathDown;
@@ -160,8 +170,28 @@ function generateTable() {
         }
     }
 
+    function endGameAndSaveScore() {
+        console.log("Game over!");
+        clearInterval(intervalo);
+        const playerName = prompt("Qual é o seu nome?");
+        if (playerName) {
+            const scores = JSON.parse(localStorage.getItem('scores')) || [];
+            const userEmail = getLoggedInUserEmail(); // Função para obter o email do usuário logado
+            scores.push({ jogador: playerName, email: userEmail, tempo: tempoDecorrido });
+            localStorage.setItem('scores', JSON.stringify(scores));
+        }
+        alert("Parabéns! Você completou o jogo!");
+        window.location.href = "Ranking.html"; // Redirecionar para a página de ranking
+    }
+
+    function getLoggedInUserEmail() {
+        const users = JSON.parse(localStorage.getItem('userData')) || [];
+        const loggedInUser = users.find(user => user.isLoggedIn);
+        return loggedInUser ? loggedInUser.email : "Desconhecido";
+    }
+    
+    
     document.addEventListener('keydown', function(event) {
-        //console.log("Key pressed: " + event.key + " (" + window.numbInput + ")");
         let cardIndex = 0;
         if( event.key !== 'Enter' ) {
             cardIndex = parseInt(event.key);
@@ -178,7 +208,6 @@ function generateTable() {
         } else {
             cardIndex = parseInt(window.numbInput);
             window.numbInput = null;
-            console.log("Card index: " + cardIndex);
 
             if (!firstCard) {
                 let firstCardImage = document.querySelector(`img[id="${cardIndex}"]`);
@@ -187,7 +216,6 @@ function generateTable() {
                     return;
                 }
                 firstCard = firstCardImage;
-                console.log(firstCard)
                 firstCardImage.src = cards.find(card => card.name === firstCardImage.dataset.name).imagePathUp;
             } else if (!secondCard) {
                 let secondCardImage = document.querySelector(`img[id="${cardIndex}"]`);

@@ -1,5 +1,7 @@
 "use strict";
 
+const TOTAL_POINTS = 10; // Defina o número total de pontos necessários para vencer o jogo
+
 let tempoDecorrido = 0;
 let intervalo;
 let countdown;
@@ -125,10 +127,11 @@ function generateTable() {
 
     function updateScores(){
         document.getElementById("player1-score").textContent = `Player 1: ${player1Score}`
+        const remainingPoints = TOTAL_POINTS - (player1Score);
+        document.getElementById("points-remaining").textContent = `Pontos Restantes: ${remainingPoints}`;
     }
 
     document.addEventListener('keydown', function(event) {
-        //console.log("Key pressed: " + event.key + " (" + window.numbInput + ")");
         let cardIndex = 0;
         if( event.key !== 'Enter' ) {
             cardIndex = parseInt(event.key);
@@ -145,7 +148,6 @@ function generateTable() {
         } else {
             cardIndex = parseInt(window.numbInput);
             window.numbInput = null;
-            console.log("Card index: " + cardIndex);
     
             if (!firstCard) {
                 let firstCardImage = document.querySelector(`img[id="${cardIndex}"]`);
@@ -154,7 +156,6 @@ function generateTable() {
                     return;
                 }
                 firstCard = firstCardImage;
-                console.log(firstCard)
                 firstCardImage.src = cards.find(card => card.name === firstCardImage.dataset.name).imagePathUp;
             } else if (!secondCard) {
                 let secondCardImage = document.querySelector(`img[id="${cardIndex}"]`);
@@ -212,7 +213,7 @@ function generateTable() {
         // Check if the two cards match
         if (firstCard.dataset.name === secondCard.dataset.name) {
             // They match, so keep them face up
-                player1Score += 1
+            player1Score += 1
             updateScores()
             preventClick = true;
             if (player1Score === 10) {

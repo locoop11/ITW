@@ -1,3 +1,7 @@
+"use strict";
+
+const TOTAL_POINTS = 10; // Defina o número total de pontos necessários para vencer o jogo
+
 let tempoDecorrido = 0;
 let intervalo;
 
@@ -114,10 +118,11 @@ function generateTable() {
         document.getElementById("player1-score").textContent = `Player 1: ${player1Score}`
         document.getElementById("player2-score").textContent = `Player 2: ${player2Score}`
         document.getElementById("current-player").textContent = `Current Player: ${currentPlayer}`
+        const remainingPoints = TOTAL_POINTS - (player1Score + player2Score);
+        document.getElementById("points-remaining").textContent = `Pontos Restantes: ${remainingPoints}`;
     }
 
     document.addEventListener('keydown', function(event) {
-        //console.log("Key pressed: " + event.key + " (" + window.numbInput + ")");
         let cardIndex = 0;
         if( event.key !== 'Enter' ) {
             cardIndex = parseInt(event.key);
@@ -134,7 +139,6 @@ function generateTable() {
         } else {
             cardIndex = parseInt(window.numbInput);
             window.numbInput = null;
-            console.log("Card index: " + cardIndex);
 
             if (!firstCard) {
                 let firstCardImage = document.querySelector(`img[id="${cardIndex}"]`);
@@ -143,7 +147,6 @@ function generateTable() {
                     return;
                 }
                 firstCard = firstCardImage;
-                console.log(firstCard)
                 firstCardImage.src = cards.find(card => card.name === firstCardImage.dataset.name).imagePathUp;
             } else if (!secondCard) {
                 let secondCardImage = document.querySelector(`img[id="${cardIndex}"]`);
@@ -214,6 +217,17 @@ function generateTable() {
 
             updateScores()
             preventClick = true;
+            if (player1Score + player2Score === TOTAL_POINTS) {
+                if (player1Score > player2Score) {
+                    alert("Parabéns, Jogador 1! Você ganhou o jogo!");
+                } else if (player2Score > player1Score) {
+                    alert("Parabéns, Jogador 2! Você ganhou o jogo!");
+                } else {
+                    alert("Empate! Ambos os jogadores têm a mesma pontuação.");
+                }
+                window.location.href = "Home.html";
+            }
+
             setTimeout(() => {
                 // They match, so remove the matched cards from the table
                 firstCard.parentNode.removeChild(firstCard);
