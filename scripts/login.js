@@ -41,9 +41,10 @@ function addData(event) {
         users.push(newUser);
 
         localStorage.setItem(USER_DATA, JSON.stringify(users));
+        alert("Email registered successfully");
         window.location.href = "Home.html"; // Redireciona para Home após o registro
     } else {
-        alert("Email registered successfully");
+        alert("Email already registered");
     }
 }
 

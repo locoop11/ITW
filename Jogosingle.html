@@ -16,6 +16,7 @@ PL21 ----------------------->
     <link rel="stylesheet" href="style/jogar.css">
     <link rel="stylesheet" href="style/tabela.css">
     <script src="scripts/jogosingle.js"></script>
+    <script src="scripts/ranking.js"></script>
     <meta charset="UTF-8">
     <title>Jogar Singleplayer</title>
 </head>
@@ -30,13 +31,14 @@ PL21 ----------------------->
     <div class="game-container">
         <div class="game-controls">
             <button id="startButton" class="playButton">COMEÇAR JOGO</button>
-            <button id="endButton" class="playButton" onclick="terminarJogo()" disabled>TERMINAR</button>
+            <button id="endButton"  id="playButton" disabled>TERMINAR JOGO</button>
         </div>
-
         <section class="table" id="game-board"></section>
         
         <div class="scoreboard">
             <div id="player1-score">Player 1: 0</div>
+            <br>
+            <div id="points-remaining">Pontos Restantes: 10</div>
         </div>
     </div>
 </body>

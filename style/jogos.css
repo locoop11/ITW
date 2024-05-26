@@ -68,3 +68,16 @@ button.playButton:hover:not(:disabled) {
 .hidden {
     visibility: hidden;
 }
+
+#endButton {
+    width: 150px; 
+    height: 60px; 
+    padding: 10px 20px;
+    font-size: 18px;    
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50; 
+    border: 1px solid black;
+    cursor: pointer;
+    border-collapse: collapse;
+}
