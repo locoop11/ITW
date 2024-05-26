@@ -85,9 +85,15 @@ function generateTable() {
             const img = document.createElement('img');
             img.src = currentCard.imagePathDown;
             img.alt = currentCard.name;
+            img.id = String(i * numCols + j + 1);
             img.dataset.name = currentCard.name; // Store the card name in a data attribute
 
             cell.appendChild(img);
+            cell.className = "card-container"
+            const p = document.createElement("p")
+
+            p.textContent = String(i * numCols + j + 1)
+            cell.appendChild(p)
             row.appendChild(cell);
         }
         tbody.appendChild(row);
@@ -110,7 +116,51 @@ function generateTable() {
         document.getElementById("current-player").textContent = `Current Player: ${currentPlayer}`
     }
 
+    document.addEventListener('keydown', function(event) {
+        //console.log("Key pressed: " + event.key + " (" + window.numbInput + ")");
+        let cardIndex = 0;
+        if( event.key !== 'Enter' ) {
+            cardIndex = parseInt(event.key);
+            if( isNaN(cardIndex) ) {
+                alert("Invalid card index");
+                window.numbInput = null;
+                return;
+            }
+            if( window.numbInput ) {
+                window.numbInput += event.key;
+            } else {
+                window.numbInput = event.key;
+            }
+        } else {
+            cardIndex = parseInt(window.numbInput);
+            window.numbInput = null;
+            console.log("Card index: " + cardIndex);
 
+            if (!firstCard) {
+                let firstCardImage = document.querySelector(`img[id="${cardIndex}"]`);
+                if( !firstCardImage ) {
+                    alert("Invalid card index");
+                    return;
+                }
+                firstCard = firstCardImage;
+                console.log(firstCard)
+                firstCardImage.src = cards.find(card => card.name === firstCardImage.dataset.name).imagePathUp;
+            } else if (!secondCard) {
+                let secondCardImage = document.querySelector(`img[id="${cardIndex}"]`);
+                if( !secondCardImage ) {
+                    alert("Invalid card index");
+                    return;
+                }
+                secondCard = secondCardImage;
+                secondCardImage.src = cards.find(card => card.name === secondCardImage.dataset.name).imagePathUp;
+                
+                // Check if the two cards match
+                processCardsMatch(firstCard, secondCard);
+
+            }            
+        }
+    });
+    
     // Add a listener on the table to rotate the cards face up
     table.addEventListener('click', function(event) {
         if (preventClick) return;
@@ -128,61 +178,69 @@ function generateTable() {
                 secondCard = img;
                 img.src = cards.find(card => card.name === img.dataset.name).imagePathUp;
                 
-                if (firstCard === secondCard){
-                    
-                    alert("Nao podes escolher a mesma carta duas vezes!\nPerdeste a vez!")
-                    // They match, so keep them face up
-                    if (currentPlayer === 1)
-                        currentPlayer = 2
-                    if (currentPlayer === 2)
-                        currentPlayer = 1
-                    firstCard.src = cards.find(card => card.name === firstCard.dataset.name).imagePathDown;
-                    secondCard.src = cards.find(card => card.name === secondCard.dataset.name).imagePathDown;
-                    firstCard = null;
-                    secondCard = null;
-
-                }
-
-
                 // Check if the two cards match
-                if (firstCard.dataset.name === secondCard.dataset.name) {
-                    // They match, so keep them face up
-                    if (currentPlayer === 1)
-                        player1Score += 1
-                    if (currentPlayer === 2)
-                        player2Score += 1
+                processCardsMatchMulti(firstCard, secondCard);
 
-                    updateScores()
-                    preventClick = true;
-                    setTimeout(() => {
-                        // They match, so remove the matched cards from the table
-                        firstCard.parentNode.removeChild(firstCard);
-                        secondCard.parentNode.removeChild(secondCard);
-                        firstCard = null;
-                        secondCard = null;
-                        preventClick = false;
-                    }, 1000); // 1 second delay
-
-
-                } else {
-                    // They don't match, so turn them back face down after a short delay
-                    if (currentPlayer === 1)
-                        currentPlayer = 2
-                    else
-                        currentPlayer = 1
-                    updateScores()
-                    preventClick = true;
-                    setTimeout(() => {
-                        firstCard.src = cards.find(card => card.name === firstCard.dataset.name).imagePathDown;
-                        secondCard.src = cards.find(card => card.name === secondCard.dataset.name).imagePathDown;
-                        firstCard = null;
-                        secondCard = null;
-                        preventClick = false;
-                    }, 1000); // 1 second delay
-                }
             }
         }
     });
 
+    function processCardsMatchMulti(firstCardImagePath, secondCardImagePath) {
+        firstCard = firstCardImagePath;
+        secondCard = secondCardImagePath;
+        if (firstCard === secondCard){
+                    
+            alert("Nao podes escolher a mesma carta duas vezes!\nPerdeste a vez!")
+            // They match, so keep them face up
+            if (currentPlayer === 1)
+                currentPlayer = 2
+            if (currentPlayer === 2)
+                currentPlayer = 1
+            firstCard.src = cards.find(card => card.name === firstCard.dataset.name).imagePathDown;
+            secondCard.src = cards.find(card => card.name === secondCard.dataset.name).imagePathDown;
+            firstCard = null;
+            secondCard = null;
+
+        }
+
+
+        // Check if the two cards match
+        if (firstCard.dataset.name === secondCard.dataset.name) {
+            // They match, so keep them face up
+            if (currentPlayer === 1)
+                player1Score += 1
+            if (currentPlayer === 2)
+                player2Score += 1
+
+            updateScores()
+            preventClick = true;
+            setTimeout(() => {
+                // They match, so remove the matched cards from the table
+                firstCard.parentNode.removeChild(firstCard);
+                secondCard.parentNode.removeChild(secondCard);
+                firstCard = null;
+                secondCard = null;
+                preventClick = false;
+            }, 1000); // 1 second delay
+
+
+        } else {
+            // They don't match, so turn them back face down after a short delay
+            if (currentPlayer === 1)
+                currentPlayer = 2
+            else
+                currentPlayer = 1
+            updateScores()
+            preventClick = true;
+            setTimeout(() => {
+                firstCard.src = cards.find(card => card.name === firstCard.dataset.name).imagePathDown;
+                secondCard.src = cards.find(card => card.name === secondCard.dataset.name).imagePathDown;
+                firstCard = null;
+                secondCard = null;
+                preventClick = false;
+            }, 1000); // 1 second delay
+        }
+    }
+           
     gameBoard1.appendChild(table);
 }
